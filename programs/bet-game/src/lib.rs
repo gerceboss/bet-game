@@ -3,7 +3,10 @@ use anchor_lang::{prelude::*, system_program};
 use pyth_sdk_solana::load_price_feed_from_account_info;
 // This is your program's public key and it will update
 // automatically when you build the project.
-declare_id!("5Afkbo4PhAZGZfsyQx99wk78pPgZzMAxAQCLZCgjBVSE");
+
+
+//deployed on devnet with the following program id
+declare_id!(" DAconAbZXm7EPoWW5WK9uwhsunkLSSw8n1ZBpDX6KFE9");
 // player 1 creates a bet
 //all can see the bet
 //player 2 also bets some number on this creaated bet
@@ -207,12 +210,15 @@ pub struct ClaimBet<'info> {
     )]
     pub bet: Account<'info, Bet>,
     #[account(address=bet.pyth_price_key @BetError::InvalidPythKey)]
+    /// CHECK: This is not dangerous because we don't read or write from this account
     pub pyth_key: AccountInfo<'info>,
 
     #[account(address=bet.bet_1.player)]
+    /// CHECK: This is not dangerous because we don't read or write from this account
     pub player_1: AccountInfo<'info>,
 
     #[account(address=bet.bet_2.as_ref().unwrap().player)]
+    /// CHECK: This is not dangerous because we don't read or write from this account
     pub player_2: AccountInfo<'info>,
 
     #[account(mut)]

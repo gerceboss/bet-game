@@ -1,14 +1,14 @@
 [features]
 seeds = false
 skip-lint = false
-[programs.localnet]
+[programs.devnet]
 bet_game = "DAconAbZXm7EPoWW5WK9uwhsunkLSSw8n1ZBpDX6KFE9"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "/home/nilav/.config/solana/id.json"
 
 [scripts]
